@@ -21,4 +21,8 @@
       state: present # other options are absent (to remove the package), latest (update the existing package)
       update_cache: yes
     become: yes
-    
+  - name: running shell commands
+    shell: java -version # use to trigger shell commands, will get executed everytime
+    register: output
+  - name: print the output of shell commands
+    debug: var=output.stdout_lines # print output captured using register module 
