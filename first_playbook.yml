@@ -15,3 +15,10 @@
       password: india123
       generate_ssh_key: yes
     become: yes
+  - name: install individual package
+    package: # OS generic module to install different packages in Linux OS, identify the package manage using "ansible_pkg_mgr" attribute of from gather facts
+      name: default-jdk
+      state: present # other options are absent (to remove the package), latest (update the existing package)
+      update_cache: yes
+    become: yes
+    
