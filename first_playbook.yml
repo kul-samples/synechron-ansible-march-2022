@@ -7,6 +7,5 @@
   - name: setting up hostname
     hostname:  # module name, all attribute for the mentioned module would be indentated to right using "spacebar", TAB is prohibited
       name: ansible-controller
-    become: yes
+    become: yes # this will overwrite the property setup at play level
     become_user: root
-    
