@@ -13,5 +13,5 @@
     user: 
       name: kmayer
       password: india123
+      generate_ssh_key: yes
     become: yes
-    
