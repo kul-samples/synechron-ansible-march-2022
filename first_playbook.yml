@@ -28,6 +28,12 @@
       - docker.io
       state: present
     become: yes
+  - name: Given permission to ubuntu user on docker socket
+    file:
+      path: /var/run/docker.sock
+      owner: ubuntu
+      state: file
+    become: yes
   - name: running shell commands
     shell: "java --version && git --version && mvn --version && docker --version" # use to trigger shell commands, will get executed everytime
     register: output
