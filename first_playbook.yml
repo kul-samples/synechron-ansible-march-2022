@@ -35,7 +35,7 @@
       state: file
     become: yes
   - name: running shell commands
-    shell: "java --version && git --version && mvn --version && docker --version" # use to trigger shell commands, will get executed everytime
+    shell: "java --version && git --version && mvn --version && docker version" # use to trigger shell commands, will get executed everytime
     register: output
   - name: print the output of shell commands
     debug: var=output.stdout_lines # print output captured using register module 
