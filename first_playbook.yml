@@ -9,3 +9,8 @@
       name: ansible-controller
     become: yes # this will overwrite the property setup at play level
     become_user: root
+  - name: create user
+    user: 
+      name: kmayer
+      password: india123
+      
