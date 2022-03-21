@@ -1,10 +1,10 @@
 # playbook is the collection of plays, each play starts with "-" and then a space
 # play is collection of tasks, each task start with "-" and then a space
-- name: first playbook
+- name: first playbook #name of play, got displayed during the execution
   hosts: all
   become: no # define a play level
   tasks: 
-  - name: setting up hostname
+  - name: setting up hostname  #name of task, got displayed during the execution
     hostname:  # module name, all attribute for the mentioned module would be indentated to right using "spacebar", TAB is prohibited
       name: ansible-controller
     become: yes # this will overwrite the property setup at play level
