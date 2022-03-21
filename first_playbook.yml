@@ -17,6 +17,8 @@
       password: india123
       generate_ssh_key: yes
     become: yes
+    tags:
+    - user_creation
   - name: install individual package
     package: # OS generic module to install different packages in Linux OS, identify the package manage using "ansible_pkg_mgr" attribute of from gather facts
       name: default-jdk
@@ -41,3 +43,12 @@
     register: output
   - name: print the output of shell commands
     debug: var=output.stdout_lines # print output captured using register module 
+  - name: cat passwd file
+    shell: cat /etc/passwd
+    register: users
+    tags:
+    - user_creation
+  - name: print users
+    debug: var=users.stdout_lines
+    tags:
+    - user_creation
