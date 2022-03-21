@@ -3,6 +3,8 @@
 - name: first playbook #name of play, got displayed during the execution
   hosts: all
   become: no # define a play level
+  vars:
+    user_name: demo
   tasks: 
   - name: setting up hostname  #name of task, got displayed during the execution
     hostname:  # module name, all attribute for the mentioned module would be indentated to right using "spacebar", TAB is prohibited
@@ -11,7 +13,7 @@
     become_user: root
   - name: create user
     user: 
-      name: kmayer
+      name: {{ user_name }}
       password: india123
       generate_ssh_key: yes
     become: yes
