@@ -43,7 +43,7 @@
     shell: cd /opt/app && forever logs app.js
     register: current_status
   - name: start application
-    when: current_status.stdout_err is search('No logs available for process')
+    when: current_status.stderr is search('No logs available for process')
     shell: cd /opt/app && forever start app.js && forever logs app.js
     register: start_application
   - name: print application logs on screen
