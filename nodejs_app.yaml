@@ -10,8 +10,20 @@
       update_cache: yes
     become: yes
   - name: checking version
-    shell: echo nodejs version: `node --version` && echo npm version: `npm --version`
+    shell: node --version && npm --version
     register: version
   - name: print versions
-    debug: var=version.stdout_lines
+    debug: var=version.stdout_lines  
+  - name: creating app directory
+    file:
+      path: /opt/app
+      owner: ubuntu
+      group: ubuntu
+      state: absent
+  - name: creating app directory
+    file:
+      path: /opt/app
+      owner: ubuntu
+      group: ubuntu
+      state: directory
   
