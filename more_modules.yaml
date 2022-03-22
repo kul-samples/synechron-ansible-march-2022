@@ -1,0 +1,9 @@
+- name: sample modules
+  hosts: all
+
+  tasks:
+  - name: copy module
+    copy:
+      src: README.md
+      dest: /tmp/README.md
+    
