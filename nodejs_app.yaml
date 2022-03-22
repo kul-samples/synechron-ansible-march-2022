@@ -38,4 +38,14 @@
   - name: Install nodejs modules
     npm:
       path: /opt/app
-      
+  - name: install forever module
+    npm:
+      name: forever
+      global: yes
+      state: present
+    become: yes
+  - name: start application
+    shell: cd /opt/app && forever start app.js && forever logs app.js
+    register: start_application
+  - name: print application logs on screen
+    debug: var=start_application.stadout_lines
