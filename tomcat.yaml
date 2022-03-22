@@ -39,3 +39,8 @@
       dest: /etc/init.d/tomcat
       mode: "0755"
     become: yes
+  - name: start tomcat
+    service:
+      name: tomcat
+      state: started
+      enabled: yes
