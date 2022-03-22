@@ -43,7 +43,7 @@
     shell: cd /opt/app && forever logs app.js
     register: current_status
   - name: start application
-    when: "'Cannot find forever process' in current_status.stdouot"
+    when: "'Cannot find forever process' in current_status.stdout"
     shell: cd /opt/app && forever start app.js && forever logs app.js
     register: start_application
   - name: print application logs on screen
