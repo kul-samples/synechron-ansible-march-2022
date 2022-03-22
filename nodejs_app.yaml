@@ -24,7 +24,6 @@
       group: ubuntu
       state: directory
   - name: download code
-    when: git_status.stdout is search('not a git repository')
     git:
       repo: "https://github.com/kul-samples/{{ repo_name }}.git"
       dest: "/opt/app"
