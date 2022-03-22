@@ -17,12 +17,6 @@
     register: version
   - name: print versions
     debug: var=version.stdout_lines  
-  - name: removing app directory
-    file:
-      path: /opt/app
-      owner: ubuntu
-      group: ubuntu
-      state: absent
   - name: creating app directory
     file:
       path: /opt/app
@@ -30,11 +24,13 @@
       group: ubuntu
       state: directory
   - name: download code
+    when: git_status.stdout is search('not a git repository')
     git:
       repo: "https://github.com/kul-samples/{{ repo_name }}.git"
       dest: "/opt/app"
       version: "{{ branch_name }}"
       accept_hostkey: yes
+      update: yes
   - name: Install nodejs modules
     npm:
       path: /opt/app
@@ -44,7 +40,11 @@
       global: yes
       state: present
     become: yes
+  - name: checking current status of application
+    shell: cd /opt/app && forever logs app.js
+    register: current_status
   - name: start application
+    when: current_status.stdout is search('No logs available for process')
     shell: cd /opt/app && forever start app.js && forever logs app.js
     register: start_application
   - name: print application logs on screen
