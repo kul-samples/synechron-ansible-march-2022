@@ -3,6 +3,10 @@
   vars:
     tomcat_url: https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.60/bin/apache-tomcat-9.0.60.tar.gz
     connector_port: 9090
+    JAVA_HOME: /usr/lib/jvm/default-java
+    CATALINA_HOME: /opt/apache-tomcat-9.0.60
+    CATALINA_BASE: /opt/apache-tomcat-9.0.60
+    TOMCAT_USER: ubuntu
   tasks:
   - name: Install Java need for tomcat
     package:
@@ -28,4 +32,9 @@
   - name: updating server.xml
     template: 
       src: server.xml.j2
-      dest: /opt/apache-tomcat-9.0.60/conf/server.xml
+      dest: "{{ CATALINA_HOME }}/conf/server.xml"
+  - name: adding tomcat init file
+    template:
+      src: tomcat-init.sh.j2
+      dest: /etc/init.d/tomcat
+      mode: "0755"
