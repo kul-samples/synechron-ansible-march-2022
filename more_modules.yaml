@@ -1,9 +1,10 @@
 - name: sample modules
   hosts: all
-
+  vars:
+    files_to_copy: ("README.md","hosts","ansible.cfg")
   tasks:
   - name: copy module
     copy:
-      src: README.md
-      dest: /tmp/README.md
-    
+      src: {{ item }}
+      dest: /tmp/{{ item }}
+    with_items: '{{ files_to_copy }}'
