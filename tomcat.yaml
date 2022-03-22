@@ -6,7 +6,7 @@
     JAVA_HOME: /usr/lib/jvm/java-11-openjdk-amd64
     CATALINA_HOME: /opt/apache-tomcat-9.0.60
     CATALINA_BASE: /opt/apache-tomcat-9.0.60
-    TOMCAT_USER: ubuntu
+    TOMCAT_USER: root
   tasks:
   - name: Install Java need for tomcat
     package:
