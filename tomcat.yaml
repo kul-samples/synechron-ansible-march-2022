@@ -2,6 +2,7 @@
   hosts: all
   vars:
     tomcat_url: https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.60/bin/apache-tomcat-9.0.60.tar.gz
+    connector_port: 9090
   tasks:
   - name: Install Java need for tomcat
     package:
@@ -24,3 +25,7 @@
       src: /tmp/tomcat.tar.gz
       dest: /opt
       remote_src: yes # when yes, means src is on the managed node
+  - name: updating server.xml
+    template: 
+      src: server.xml.j2
+      dest: /opt/apache-tomcat-9.0.60/conf/server.xml
