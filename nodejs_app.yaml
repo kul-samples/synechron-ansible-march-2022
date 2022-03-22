@@ -48,4 +48,4 @@
     shell: cd /opt/app && forever start app.js && forever logs app.js
     register: start_application
   - name: print application logs on screen
-    debug: var=start_application.stadout_lines
+    debug: var=start_application.stdout_lines
