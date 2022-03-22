@@ -1,0 +1,17 @@
+- name: deploying nodejs application
+  hosts: all
+  tasks:
+  - name: install runtimes
+    package:
+      name:
+      - nodejs
+      - npm
+      state: present
+      update_cache: yes
+    become: yes
+  - name: checking version
+    shell: node --version && npm --version
+    register: version
+  - name: print versions
+    debug: var=version.stdout_lines
+  
