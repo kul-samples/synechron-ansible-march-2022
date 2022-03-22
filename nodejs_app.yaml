@@ -42,10 +42,8 @@
   - name: checking current status of application
     shell: cd /opt/app && forever logs app.js
     register: current_status
-  - debug: var=current_status.stdout
-  - debug: var=current_status.stderr
   - name: start application
-    when: "'No logs available for process' in current_status.stderr_lines"
+    when: "'Cannot find forever process' in current_status.stdouot"
     shell: cd /opt/app && forever start app.js && forever logs app.js
     register: start_application
   - name: print application logs on screen
