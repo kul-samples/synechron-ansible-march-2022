@@ -14,7 +14,7 @@
     register: version
   - name: print versions
     debug: var=version.stdout_lines  
-  - name: creating app directory
+  - name: removing app directory
     file:
       path: /opt/app
       owner: ubuntu
