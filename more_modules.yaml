@@ -1,7 +1,7 @@
 - name: sample modules
   hosts: all
   vars:
-    files_to_copy: ("README.md","hosts","ansible.cfg")
+    files_to_copy: ["README.md","hosts","ansible.cfg"]
   tasks:
   - name: copy module
     copy:
