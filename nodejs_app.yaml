@@ -34,5 +34,4 @@
       repo: "https://github.com/kul-samples/{{ repo_name }}.git"
       dest: "/opt/app"
       version: "{{ branch_name }}"
-      accpet_hostkey: yes
-      
+      accept_hostkey: yes
