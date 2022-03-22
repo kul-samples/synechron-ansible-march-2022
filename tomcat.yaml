@@ -49,4 +49,4 @@
     service:
       name: tomcat
       state: restarted
-      
+    become: yes
