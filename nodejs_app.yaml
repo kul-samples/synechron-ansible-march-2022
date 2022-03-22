@@ -1,5 +1,8 @@
 - name: deploying nodejs application
   hosts: all
+  vars:
+    repo_name: nodejs
+    branch_name: master
   tasks:
   - name: install runtimes
     package:
@@ -26,4 +29,10 @@
       owner: ubuntu
       group: ubuntu
       state: directory
-  
+  - name: download code
+    git:
+      repo: "https://github.com/kul-samples/{{ repo_name }}.git"
+      dest: "/opt/app"
+      version: "{{ branch_name }}"
+      accpet_hostkey: yes
+      
