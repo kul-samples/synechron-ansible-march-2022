@@ -1,0 +1,26 @@
+- name: setting up tomcat server
+  hosts: all
+  vars:
+    tomcat_url: https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.60/bin/apache-tomcat-9.0.60.tar.gz
+  tasks:
+  - name: Install Java need for tomcat
+    package:
+      name: default-jdk
+      state: present
+      update_cache: yes
+    become: yes
+  - name: download tomcat tar file
+    get_url:
+      url: "{{ tomcat_url }}"
+      dest: /tmp/tomcat.tar.gz
+  - name: change owner for /opt
+    file:
+      path: /opt
+      owner: ubuntu
+      group: ubuntu
+    become: yes
+  - name: untar tomcat tar file
+    unarchive:
+      src: /tmp/tomcat.tar.gz
+      dest: /opt
+      remote_src: yes # when yes, means src is on the managed node
