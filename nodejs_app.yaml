@@ -35,3 +35,7 @@
       dest: "/opt/app"
       version: "{{ branch_name }}"
       accept_hostkey: yes
+  - name: Install nodejs modules
+    npm:
+      path: /opt/app
+      
