@@ -18,17 +18,14 @@
     get_url:
       url: "{{ tomcat_url }}"
       dest: /tmp/tomcat.tar.gz
+    notify: 
+    - untar_tomcat_tar_file
   - name: change owner for /opt
     file:
       path: /opt
       owner: ubuntu
       group: ubuntu
     become: yes
-  - name: untar tomcat tar file
-    unarchive:
-      src: /tmp/tomcat.tar.gz
-      dest: /opt
-      remote_src: yes # when yes, means src is on the managed node
   - name: updating server.xml
     template: 
       src: server.xml.j2
@@ -48,9 +45,13 @@
       enabled: no
     become: yes
   handlers: # are like tasks but being on the basis of the change any task defined under tasks
+  - name: untar_tomcat_tar_file
+    unarchive:
+      src: /tmp/tomcat.tar.gz
+      dest: /opt
+      remote_src: yes # when yes, means src is on the managed node
   - name: restart_tomcat
     service:
       name: tomcat
       state: restarted
     become: yes
-    
