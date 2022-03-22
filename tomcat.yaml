@@ -33,6 +33,8 @@
     template: 
       src: server.xml.j2
       dest: "{{ CATALINA_HOME }}/conf/server.xml"
+    notify: # module to call the handlers mentioned under, if this perticular task got changed
+    - restart_tomcat
   - name: adding tomcat init file
     template:
       src: tomcat-init.sh.j2
@@ -45,8 +47,10 @@
       state: started
       enabled: no
     become: yes
-  - name: restart tomcat
+  handlers: # are like tasks but being on the basis of the change any task defined under tasks
+  - name: restart_tomcat
     service:
       name: tomcat
       state: restarted
     become: yes
+    
