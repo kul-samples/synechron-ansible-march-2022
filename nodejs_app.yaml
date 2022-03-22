@@ -10,7 +10,7 @@
       update_cache: yes
     become: yes
   - name: checking version
-    shell: echo "nodejs version: `node --version`" && echo "npm version: `npm --version`"
+    shell: echo nodejs version: `node --version` && echo npm version: `npm --version`
     register: version
   - name: print versions
     debug: var=version.stdout_lines
