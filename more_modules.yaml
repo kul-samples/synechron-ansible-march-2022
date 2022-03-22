@@ -7,4 +7,4 @@
     copy:
       src: {{ item }}
       dest: /tmp/{{ item }}
-    with_items: '{{ files_to_copy }}'
+    with_items: "{{ files_to_copy }}"
