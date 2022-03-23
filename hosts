@@ -6,3 +6,5 @@ localhost ansible_connection=local
 172.31.44.161
 # centos
 172.31.27.96 ansible_user=centos
+# ansible_user is the user which master will use while connecting with the managed node
+# by default master will use the current user if ansible_user is not defined
