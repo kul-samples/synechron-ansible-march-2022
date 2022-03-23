@@ -8,8 +8,9 @@
     assert:
       that:
         - ( ansible_distribution == "Ubuntu" ) or
-          ( ansible_distribution == "Fedora" ) 
-      fail_msg: "As of now {{ ansible_distribution }} distribution is not supported, please kulbhushan.mayer@thinknyx.com for further details"
+          ( ansible_distribution == "Fedora" ) or
+          ( ansible_distribution == "Rocky" )
+      fail_msg: "As of now {{ ansible_distribution }} distribution is not supported, please contact kulbhushan.mayer@thinknyx.com for further details"
   - name: install apache on Distribution other than ubuntu
     when: ansible_pkg_mgr != "apt"
     # negative condition to check the package manager for the managed nodes to skip the server where condition is not matched
