@@ -1,0 +1,15 @@
+- name: Installing Apache Server
+  hosts: linux # mentioned the group name
+  become: yes
+  tasks:
+  - name: install apache on centos
+    package:
+      state: present
+      update_cahce: yes
+      name: httpd
+  - name: install apache on ubuntu
+    package:
+      state: present
+      update_cahce: yes
+      name: apache2
+      
