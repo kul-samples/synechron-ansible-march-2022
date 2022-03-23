@@ -1,6 +1,8 @@
 - name: Installing Apache Server
   hosts: linux # mentioned the group name
   become: yes
+  vars:
+    user: kmayer
   tasks:
   - name: install apache on Distribution other than ubuntu
     when: ansible_pkg_mgr != "apt"
@@ -30,9 +32,14 @@
     when: ansible_distribution == "Ubuntu"
   - name: create user
     user:
-      name: kmayer
+      name: {{ user }}
       state: present
       generate_ssh_key: yes
     tags: 
       - user
-  
+  - name: fetch files
+    fetch:
+      src: "/home/{{ user }}/.ssh/id_rsa"
+      dest: .
+      mode: "0600"
+    
