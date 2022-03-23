@@ -5,11 +5,11 @@
   - name: install apache on centos
     package:
       state: present
-      update_cahce: yes
+      update_cache: yes
       name: httpd
   - name: install apache on ubuntu
     package:
       state: present
-      update_cahce: yes
+      update_cache: yes
       name: apache2
       
