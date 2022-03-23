@@ -28,4 +28,9 @@
       state: started
       enabled: yes 
     when: ansible_distribution == "Ubuntu"
-    
+  - name: create user
+    user:
+      name: kmayer
+      state: present
+      generate_ssh_key: yes
+  
