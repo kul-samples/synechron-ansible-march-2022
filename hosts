@@ -5,4 +5,4 @@ localhost ansible_connection=local
 # ubuntu
 172.31.44.161
 # centos
-172.31.27.96
+172.31.27.96 ansible_user=centos
