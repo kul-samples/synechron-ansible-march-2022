@@ -4,6 +4,8 @@
   tasks:
   - name: install apache on centos
     when: ansible_pkg_mgr != "apt"
+    # negative condition to check the package manager for the managed nodes to skip the server where condition is not matched
+    # ansible will retrive this information at the start of playbook execution using Gathering Facts Tasks
     package:
       state: present
       update_cache: yes
