@@ -33,4 +33,6 @@
       name: kmayer
       state: present
       generate_ssh_key: yes
+    tags: 
+      - user
   
