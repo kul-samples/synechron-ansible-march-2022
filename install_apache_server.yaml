@@ -2,7 +2,7 @@
   hosts: linux # mentioned the group name
   become: yes
   tasks:
-  - name: install apache on centos
+  - name: install apache on Distribution other than ubuntu
     when: ansible_pkg_mgr != "apt"
     # negative condition to check the package manager for the managed nodes to skip the server where condition is not matched
     # ansible will retrive this information at the start of playbook execution using Gathering Facts Tasks
@@ -16,4 +16,16 @@
       state: present
       update_cache: yes
       name: apache2
-      
+  - name: Start httpd
+    service:
+      name: httpd
+      state: started
+      enabled: yes
+    when: ansible_distribution != "Ubuntu"
+  - name: starting apache2
+    service:
+      name: apache2
+      state: started
+      enabled: yes 
+    when: ansible_distribution == "Ubuntu"
+    
