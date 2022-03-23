@@ -3,11 +3,13 @@
   become: yes
   tasks:
   - name: install apache on centos
+    when: ansible_pkg_mgr != "apt"
     package:
       state: present
       update_cache: yes
       name: httpd
   - name: install apache on ubuntu
+    when: ansible_pkg_mgr == "apt"
     package:
       state: present
       update_cache: yes
