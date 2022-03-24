@@ -12,4 +12,9 @@
       elements:
         - '%JAVA_HOME%/bin'
         - 'c:\git\bin'
-        
+  - name: create user
+    win_user:
+      state: present
+      name: "ansible"
+      password: "Ind!a@13$"
+      
