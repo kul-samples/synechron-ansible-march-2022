@@ -15,7 +15,11 @@
   - name: create user
     win_user:
       state: present
-      name: ansible
+      name: "{{ item }}"
       password: Ind!a@13$
       groups:
         - Administrators
+    with_items: 
+      - ansible
+      - kul
+      - kmayer
