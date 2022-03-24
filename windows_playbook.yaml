@@ -28,3 +28,9 @@
       name: git
       version: '2.35.1.2'
       state: present
+  - name: run commands
+    win_shell: |
+      git --version
+    register: windows
+  - name: print
+    debug: var=windows.stdout_lines
