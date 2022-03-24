@@ -15,5 +15,5 @@ localhost ansible_connection=local
 [win:vars]
 ansible_connection=winrm
 ansible_user=Administrator
-ansible_password="Wy;q%3-%hjRe;=K)9VWgTrCT*p3x!=Os"
+ansible_password=Wy;q%3-%hjRe;=K)9VWgTrCT*p3x!=Os
 ansible_winrm_server_cert_validation=ignore
