@@ -10,3 +10,10 @@ localhost ansible_connection=local
 172.31.19.230 ansible_user=rocky
 #fedora
 172.31.38.170 ansible_user=fedora
+[win]
+3.137.150.127
+[win:vars]
+ansible_connection=winrm
+ansible_user=Administrator
+ansible_password="Wy;q%3-%hjRe;=K)9VWgTrCT*p3x!=Os"
+ansible_winrm_server_cert_validation=ignore
