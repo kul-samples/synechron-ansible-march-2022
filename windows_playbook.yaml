@@ -17,3 +17,5 @@
       state: present
       name: ansible
       password: Ind!a@13$
+      groups:
+        - Administrators
