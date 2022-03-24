@@ -1,0 +1,10 @@
+- name: windows modules
+  hosts: win
+  tasks:
+  - name: setup ENV Variables
+    win_environment:
+      name: JAVA_HOME
+      value: c:\java
+      level: machine
+      state: present
+      
