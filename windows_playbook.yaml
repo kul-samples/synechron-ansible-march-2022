@@ -7,4 +7,9 @@
       value: c:\java
       level: machine
       state: present
-      
+  - name: add path variables
+    win_path:
+      elements:
+        - '%JAVA_HOME%/bin'
+        - 'c:\git\bin'
+        
