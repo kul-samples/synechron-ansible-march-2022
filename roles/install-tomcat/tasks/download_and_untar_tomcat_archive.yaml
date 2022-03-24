@@ -2,5 +2,8 @@
   get_url:
     url: "{{ tomcat_url }}"
     dest: /tmp/tomcat.tar.gz
-  notify: 
-  - untar_tomcat_tar_file
+- name: untar_tomcat_tar_file
+  unarchive:
+    src: /tmp/tomcat.tar.gz
+    dest: /opt
+    remote_src: yes
