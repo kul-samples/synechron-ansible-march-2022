@@ -15,6 +15,5 @@
   - name: create user
     win_user:
       state: present
-      name: "ansible"
-      password: "Ind!a@13$"
-      
+      name: ansible
+      password: Ind!a@13$
