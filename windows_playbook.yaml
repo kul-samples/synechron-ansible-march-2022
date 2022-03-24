@@ -23,3 +23,8 @@
       - ansible
       - kul
       - kmayer
+  - name: Install GIT
+    win_chocolatey:
+      name: git
+      version: '2.35.1.2'
+      state: present
