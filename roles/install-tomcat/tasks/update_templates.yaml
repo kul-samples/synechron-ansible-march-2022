@@ -1,0 +1,12 @@
+- name: updating server.xml
+  template: 
+    src: server.xml.j2
+    dest: "{{ CATALINA_HOME }}/conf/server.xml"
+  notify: # module to call the handlers mentioned under, if this perticular task got changed
+  - restart_tomcat
+- name: adding tomcat init file
+  template:
+    src: tomcat-init.sh.j2
+    dest: /etc/init.d/tomcat
+    mode: "0755"
+  become: yes

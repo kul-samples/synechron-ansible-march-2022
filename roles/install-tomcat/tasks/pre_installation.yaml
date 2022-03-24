@@ -1,0 +1,12 @@
+- name: Install Java need for tomcat
+  package:
+    name: default-jdk
+    state: present
+    update_cache: yes
+  become: yes
+- name: change owner for /opt
+  file:
+    path: /opt
+    owner: ubuntu
+    group: ubuntu
+  become: yes

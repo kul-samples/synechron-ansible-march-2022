@@ -1,2 +1,12 @@
 ---
 # handlers file for install-tomcat
+- name: untar_tomcat_tar_file
+  unarchive:
+    src: /tmp/tomcat.tar.gz
+    dest: /opt
+    remote_src: yes # when yes, means src is on the managed node
+- name: restart_tomcat
+  service:
+    name: tomcat
+    state: restarted
+  become: yes

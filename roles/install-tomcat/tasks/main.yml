@@ -1,2 +1,6 @@
 ---
 # tasks file for install-tomcat
+- include_tasks: pre_installation.yaml
+- include_tasks: download_and_untar_tomcat_archive.yaml
+- include_tasks: update_templates.yaml
+- include_tasks: start_service.yaml
